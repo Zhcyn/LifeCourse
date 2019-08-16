@@ -1,0 +1,53 @@
+//
+//  PrefixHeader.pch
+//  LNote
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#define SCREEN_FRAME [[UIScreen mainScreen] bounds]
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+
+#define IS_IPad  ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)?(YES):(NO)
+
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#define IS_IPHONE_4  (SCREEN_HEIGHT == 480.0)
+#define IS_IPHONE_5  (SCREEN_HEIGHT == 568.0)
+#define IS_IPHONE_6  (SCREEN_HEIGHT == 667.0)
+#define IS_IPHONE_6P (SCREEN_HEIGHT == 736.0)
+#define IS_IPHONE_X ((SCREEN_HEIGHT == 812.0 && SCREEN_WIDTH == 375)||(SCREEN_HEIGHT == 896.0 && SCREEN_WIDTH == 414))
+#define StatueBarHeight ((IS_IPHONE_X) ? (44) : (20))
+#define TopBarHeight ((IS_IPHONE_X) ? (84) : (64))
+#define TabbarHeight  (IS_IPHONE_X ? (49.f+34.f) : 49.f)
+#define AeraSizeHeight ((IS_IPHONE_X) ? (34) : (0))
+#define CONTENT_HEIGHT SCREEN_HEIGHT-44 - StatueBarHeight
+
+
+#define  TCCoror(a,b,c) [UIColor colorWithRed:(a)/255.0 green:(b)/255.0 blue:(c)/255.0 alpha:1]
+
+#define  TCBgColor [UIColor colorWithRed:253/255.0 green:164/255.0 blue:42/255.0 alpha:1]
+
+#define MallClassKey   @"rootVCClassString"
+#define MallTitleKey   @"title"
+#define MallImgKey     @"imageName"
+#define MallSelImgKey  @"selectedImageName"
+
+/** 弱引用 */
+#define WEAKSELF __weak typeof(self) weakSelf = self;
+
+#import "ICLanguageTool.h"
+#endif
